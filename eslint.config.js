@@ -1,18 +1,17 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from '@eslint/js';
+import globals from 'globals';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default [
+  // 1. Global ignores must be the first object in the array
+  { ignores: ['dist'] },
+
+  // 2. Standard recommended JS rules
+  js.configs.recommended,
+
+  // 3. Your Custom Configuration
   {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
+    files: ['**/*.{js,jsx}'], // Ensure this matches your file extensions!
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -22,8 +21,16 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     rules: {
+      // The rules causing the issue
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+      
+      // Your other rules
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
-])
+];
