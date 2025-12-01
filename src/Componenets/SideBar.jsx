@@ -33,12 +33,12 @@ onClick={()=>setIsOpen(false)}
 
 
 
-            <div className="  left-0 ">
+            <div className=" h-[90vh]  left-0 ">
               
                 
-                <div className="">
+                <div className="h-[90vh]">
                     
-                    <ul className="menu p-4 w-48 sm:w-80  text-base-content relative">
+                    <ul className="menu h-[100%] p-4 w-48 sm:w-80  text-base-content relative">
                         <li className="w-fit absolute right-2 z-50">
                             <button onClick={()=>setIsOpen(false)}>
                                 <AiFillCloseCircle size={24} />
@@ -64,7 +64,7 @@ onClick={()=>setIsOpen(false)}
                             <Link to="/about">About Us</Link>
                         </li  >
                                 {!isLoggedin && ( 
-                                    <li className=' bottom-0 w-[90%]'  >   
+                                    <li className='absolute  bottom-4 w-[90%]'  >   
                                     <div className='w-full flex items-center justify-center ' >
                                         <button  className='btn btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
                                             <Link to="/login" >Login</Link>
@@ -75,7 +75,7 @@ onClick={()=>setIsOpen(false)}
                                     </div></li>
                                 )}
                                 {isLoggedin && ( 
-                                    <li className=' bottom-0 w-[90%]'  >   
+                                    <li className=' absolute bottom-4 w-[90%]'  >   
                                     <div className='w-full flex items-center justify-center ' >
                                         <button  className='btn btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
                                             <Link to="/user/profile" >Profile</Link>
