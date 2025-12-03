@@ -8,6 +8,7 @@ import Footer from './Componenets/Footer'
 import SideBar from './Componenets/SideBar'
 import AboutUsPage from './pages/AboutUsPage'
 import HomePage from './pages/HomePage'
+import NotFoundpage from './pages/NotFoundpage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <Routes>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/about" element={<AboutUsPage/>}/>
+    <Route path="*" element={<NotFoundpage/>}/>
 
    </Routes> 
    
