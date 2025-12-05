@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi"
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { logout } from '../Redux/Slices/AuthSlice';
 const SideBar = () => {
 const isLoggedin=useSelector((state)=>state?.auth?.isLogin)
-
+const navigate=useNavigate()
 const role =useSelector((state)=>state?.auth?.role)
 const [isOpen,setIsOpen ]=useState(false)
-
-function handleLogout(e){
+const dispatch=useDispatch()
+async function handleLogout(e){
     e.preventDefault();
-    // const res = await dispatch(logout())
+     const res = await dispatch(logout())
+    if(res?.payload?.success)
+        navigate("/")
     
 }
 
