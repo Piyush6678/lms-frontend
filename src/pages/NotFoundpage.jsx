@@ -12,7 +12,7 @@ PAGE NOT FOUND ..
 
      <button className=' mt-5 ' >
         <a className='relative inline-block text-sm font-medium group text-[#FF6A4D]  active:text-yellow-500 focus:outline-none focus:ring ' >
-<span  onClick={()=>navigate(-1)} className='realtive block px-8 py-3 bg-[#1A2238]border  border:border-current'>
+<span  onClick={()=>navigate(-1)} className='realtive block px-8 py-3 bg-[#1A2238] border  border-current'>
 
 Go Back
 

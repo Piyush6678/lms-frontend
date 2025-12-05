@@ -9,6 +9,7 @@ import SideBar from './Componenets/SideBar'
 import AboutUsPage from './pages/AboutUsPage'
 import HomePage from './pages/HomePage'
 import NotFoundpage from './pages/NotFoundpage'
+import Signup from './pages/Signup'
 
 function App() {
 
@@ -18,7 +19,9 @@ function App() {
    
     <Routes>
     <Route path="/" element={<HomePage/>}/>
+    <Route path="/Signup" element={<Signup/>}/>
     <Route path="/about" element={<AboutUsPage/>}/>
+    
     <Route path="*" element={<NotFoundpage/>}/>
 
    </Routes> 
