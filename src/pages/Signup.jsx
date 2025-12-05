@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import { BsPersonCircle } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import HomeLayout from '../layouts/HomeLayout'
-import toast from 'react-hot-toast'
 import { createAccount } from '../Redux/Slices/AuthSlice'
 
 const Signup = () => {
