@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import HomeLayout from "../layouts/HomeLayout";
 
 // @ts-ignore: image module without type declarations
 import HomePageImage from "../assets/Images/homePageMainImage.png"
+import HomeLayout from "../layouts/HomeLayout";
 function HomePage() {
     return (
         <HomeLayout>
