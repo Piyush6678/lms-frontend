@@ -8,6 +8,7 @@ import Footer from './Componenets/Footer'
 import SideBar from './Componenets/SideBar'
 import AboutUsPage from './pages/AboutUsPage'
 import Contact from './pages/Contact'
+import CourseDescription from './pages/Course/CourseDescription'
 import CourseList from './pages/Course/CourseList'
 import Denied from './pages/Denied'
 import HomePage from './pages/HomePage'
@@ -26,6 +27,7 @@ function App() {
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/courses" element={<CourseList/>}/>
+    <Route path="/courses/description" element={<CourseDescription/>}/>
     <Route path="/about" element={<AboutUsPage/>}/>
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/denied" element={<Denied/>}/>
