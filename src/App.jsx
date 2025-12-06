@@ -7,12 +7,13 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from './Componenets/Footer'
 import SideBar from './Componenets/SideBar'
 import AboutUsPage from './pages/AboutUsPage'
+import Contact from './pages/Contact'
 import CourseList from './pages/Course/CourseList'
+import Denied from './pages/Denied'
 import HomePage from './pages/HomePage'
 import Login from './pages/Login'
 import NotFoundpage from './pages/NotFoundpage'
 import Signup from './pages/Signup'
-import Contact from './pages/Contact'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
     <Route path="/courses" element={<CourseList/>}/>
     <Route path="/about" element={<AboutUsPage/>}/>
     <Route path="/contact" element={<Contact/>}/>
+    <Route path="/denied" element={<Denied/>}/>
     
     <Route path="*" element={<NotFoundpage/>}/>
 
