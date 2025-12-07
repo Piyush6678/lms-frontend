@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { logout } from '../Redux/Slices/AuthSlice';
 const SideBar = () => {
-const isLoggedin=useSelector((state)=>state?.auth?.isLogin)
+const isLoggedIn=useSelector((state)=>state?.auth?.isLogin)
 const navigate=useNavigate()
 const role =useSelector((state)=>state?.auth?.role)
 const [isOpen,setIsOpen ]=useState(false)
@@ -51,7 +51,7 @@ onClick={()=>setIsOpen(false)}
                         <li>
                             <Link to="/">Home</Link>
                         </li> 
-                            {isLoggedin && role === "ADMIN" && (
+                            {isLoggedIn && role === "ADMIN" && (
                                 <li>
                                     <Link to="/admin/dashboard">Admin Dashboard</Link>
                                 </li>
@@ -59,6 +59,19 @@ onClick={()=>setIsOpen(false)}
                         <li>
                             <Link to="/courses">All Courses</Link>
                         </li>
+   {isLoggedIn && role === 'ADMIN' && (
+                          <>
+                          <li>
+                                <Link to="/admin/dashboard"> Admin DashBoard</Link>
+                            </li>
+                   
+                            <li>
+                                <Link to="/course/create"> Create new course</Link>
+                            </li>
+                            </>
+                        )}
+
+
 
                         <li>
                             <Link to="/contact">Contact Us</Link>
@@ -67,7 +80,7 @@ onClick={()=>setIsOpen(false)}
                         <li>
                             <Link to="/about">About Us</Link>
                         </li  >
-                                {!isLoggedin && ( 
+                                {!isLoggedIn && ( 
                                     <li className='absolute  bottom-4 w-[90%]'  >   
                                     <div className='w-full flex items-center justify-center ' >
                                         <button  className='btn btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
@@ -78,7 +91,7 @@ onClick={()=>setIsOpen(false)}
                                              </button>
                                     </div></li>
                                 )}
-                                {isLoggedin && ( 
+                                {isLoggedIn && ( 
                                     <li className=' absolute bottom-4 w-[90%]'  >   
                                     <div className='w-full flex items-center justify-center ' >
                                      <button  className='btn btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  

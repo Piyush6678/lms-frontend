@@ -16,6 +16,7 @@ import HomePage from './pages/HomePage'
 import Login from './pages/Login'
 import NotFoundpage from './pages/NotFoundpage'
 import Signup from './pages/Signup'
+import Profile from './pages/User/Profile'
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
     
     </Route>
 
+        <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
+          <Route path='/user/profile' element={<Profile />} />
+        </Route>
 
     <Route path="*" element={<NotFoundpage/>}/>
 
