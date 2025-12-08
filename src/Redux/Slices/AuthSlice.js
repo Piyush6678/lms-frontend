@@ -61,6 +61,37 @@ export const logout=createAsyncThunk("/auth/logout",async()=>{
     }
 })
 
+export const updateProfile=createAsyncThunk("/user/update/profile",async (data)=>{
+    try{
+        const response=axiosInstance.put(`user/updatae/${data[0]}`,data[1])
+
+        toast.promise(response, {
+            loading: "Wait! profile update in progress...",
+            success: (data) => {
+                return data?.data?.message;
+            },
+            error: "Failed to update profile"
+        });
+        return (await response).data;
+
+
+
+    }catch(e){
+        toast.error(e.response?.data?.message)
+    }
+})
+
+export const getUserData = createAsyncThunk("/user/details", async () => {
+    try {
+        const res = axiosInstance.get("user/me");
+        return (await res).data;
+    } catch(error) {
+        toast.error(error.message);
+    }
+})
+
+
+
 
 
 
