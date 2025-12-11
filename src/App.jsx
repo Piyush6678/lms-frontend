@@ -4,8 +4,6 @@ import './App.css'
 
 import { Route, Routes } from 'react-router-dom'
 
-import Footer from './Componenets/Footer'
-import SideBar from './Componenets/SideBar'
 import AboutUsPage from './pages/AboutUsPage'
 import Contact from './pages/Contact'
 import CourseDescription from './pages/Course/CourseDescription'
@@ -16,6 +14,7 @@ import HomePage from './pages/HomePage'
 import Login from './pages/Login'
 import NotFoundpage from './pages/NotFoundpage'
 import Checkout from './pages/Payments/Checkout'
+import CheckoutSuccess from './pages/Payments/CheckoutSuccess'
 import Signup from './pages/Signup'
 import EditProfile from './pages/User/EditProfile'
 import Profile from './pages/User/Profile'
@@ -46,6 +45,7 @@ function App() {
           <Route path='/user/profile' element={<Profile />} />
                 <Route path='/user/editprofile' element={<EditProfile />} />
                 <Route path='/checkout' element={<Checkout />} />
+        <Route path='/checkout/success' element={<CheckoutSuccess />} />
         </Route>
 
     <Route path="*" element={<NotFoundpage/>}/>
