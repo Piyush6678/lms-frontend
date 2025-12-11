@@ -18,6 +18,7 @@ export const getRazorPayId = createAsyncThunk("/razorpay/getId", async () => {
         return response.data;
     } catch(error) {
         toast.error("Failed to load data");
+        console.log(error)
     }
 })
 
@@ -57,6 +58,7 @@ export const getPaymentRecord = createAsyncThunk("/payments/record", async () =>
         return (await response).data;
     } catch(error) {
         toast.error("Operation failed");
+        console.log(error)
     }
 });
 
