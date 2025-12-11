@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import CourseDescription from './pages/Course/CourseDescription'
 import CourseList from './pages/Course/CourseList'
 import CreateCourse from './pages/Course/CreateCourse'
+import AddLecture from './pages/Dashboard/AddLectures'
 import Denied from './pages/Denied'
 import HomePage from './pages/HomePage'
 import Login from './pages/Login'
@@ -38,7 +39,7 @@ function App() {
     
     <Route element={<RequiredAuth allowedRoles={["ADMIN"]}/> } >
     <Route path ="/course/create" element={<CreateCourse/>}/>
-    
+    <Route path="/course/addlecture" element={<AddLecture />} />
     
     </Route>
 
