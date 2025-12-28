@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { logout } from '../Redux/Slices/AuthSlice';
 const SideBar = () => {
-const isLoggedIn=useSelector((state)=>state?.auth?.isLogin)
+const isLoggedIn=useSelector((state)=>state?.auth?.isLoggedIn)
 const navigate=useNavigate()
 const role =useSelector((state)=>state?.auth?.role)
 const [isOpen,setIsOpen ]=useState(false)
@@ -83,10 +83,10 @@ onClick={()=>setIsOpen(false)}
                                 {!isLoggedIn && ( 
                                     <li className='absolute  bottom-4 w-[90%]'  >   
                                     <div className='w-full flex items-center justify-center ' >
-                                        <button  className='btn btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
+                                        <button  className='btn  z-10 btn-primary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
                                             <Link to="/login" >Login</Link>
                                              </button>
-                                        <button  className='btn btn-secondary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
+                                        <button  className='btn z-10 btn-secondary px-4 py-1  font-semibold rounded-md w-1/2 '  >  
                                             <Link to="/signup" >Signup</Link>
                                              </button>
                                     </div></li>

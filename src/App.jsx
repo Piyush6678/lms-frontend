@@ -4,6 +4,7 @@ import './App.css'
 
 import { Route, Routes } from 'react-router-dom'
 
+import RequireAuth from './Componenets/Auth/RequireAuth'
 import AboutUsPage from './pages/AboutUsPage'
 import Contact from './pages/Contact'
 import CourseDescription from './pages/Course/CourseDescription'
@@ -11,6 +12,7 @@ import CourseList from './pages/Course/CourseList'
 import CreateCourse from './pages/Course/CreateCourse'
 import AddLecture from './pages/Dashboard/AddLectures'
 import AdminDashboard from './pages/Dashboard/AdminDashboard'
+import Displaylectures from './pages/Dashboard/DisplayLectures'
 import Denied from './pages/Denied'
 import HomePage from './pages/HomePage'
 import Login from './pages/Login'
@@ -33,12 +35,12 @@ function App() {
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/courses" element={<CourseList/>}/>
-    <Route path="/courses/description" element={<CourseDescription/>}/>
+    <Route path="/course/description" element={<CourseDescription/>}/>
     <Route path="/about" element={<AboutUsPage/>}/>
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/denied" element={<Denied/>}/>
     
-    <Route element={<RequiredAuth allowedRoles={["ADMIN"]}/> } >
+    <Route element={<RequireAuth allowedRoles={["ADMIN"]}/> } >
     <Route path ="/course/create" element={<CreateCourse/>}/>
     <Route path="/course/addlecture" element={<AddLecture />} />
     <Route path="/admin/dashboard" element={<AdminDashboard />} />

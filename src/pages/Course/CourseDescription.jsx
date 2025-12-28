@@ -4,6 +4,7 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 
 import HomeLayout from '../../layouts/HomeLayout'
 
+
 const CourseDescription = () => {
   const navigate=useNavigate()
   const {state}=useLocation();

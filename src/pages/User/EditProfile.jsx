@@ -5,6 +5,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import HomeLayout from '../../layouts/HomeLayout';
 import { getUserData, updateProfile } from '../../Redux/Slices/AuthSlice';
 
 const EditProfile = () => {
@@ -23,11 +24,13 @@ const[data,setData]=useState({
 function handleImageupload(e){
     e.preventDefault();
     const uploadImage=e.target.files[0]
-    const fileReader=FileReader();
-    fileReader.readAsDataUrl(uploadImage);
-    fileReader.addEventListener("load",()=>{
+    const fileReader=new FileReader();
+    fileReader.readAsDataURL(uploadImage);
+    fileReader.addEventListener("load",function(){
+   
         setData({
-            ...data,previewImage:this.result,
+            ...data,
+            previewImage:this.result,
             avatar:uploadImage,
         })
     })
@@ -53,11 +56,14 @@ async function onFormSubmit (e){
         }
 const formData=new FormData();
 
-formData.append("fullName",data.fullName)
+formData.append("fullname",data.fullName)
         formData.append("avatar", data.avatar);
-            await dispatch(updateProfile([data.userId, formData]));
-
+        console.log("onFormSubmit1")
+        await dispatch(updateProfile([data.userId, formData]));
+        console.log("onFormSubmit2")
+        
         await dispatch(getUserData());
+        console.log("onFormSubmit3")
 
 }
 

@@ -68,7 +68,7 @@ if(!isValidPassword(signUpData.password)) {
             return;
         }
 const formData=new FormData();
-formData.append("fullName",signUpData.fullName);
+formData.append("fullname",signUpData.fullName);
 formData.append("email",signUpData.email);
 formData.append("password",signUpData.password);
 signUpData.avatar&&formData.append("avatar",signUpData.avatar);
@@ -76,7 +76,7 @@ signUpData.avatar&&formData.append("avatar",signUpData.avatar);
  // dispatch create account action
         const response = await dispatch(createAccount(formData));
         if(response?.payload?.success){
-
+           
             navigate("/");
         }
 
@@ -117,7 +117,7 @@ onChange={getImage}
 
 />
 <div className='flex flex-col gap-1' >
-<label htmlFor="fullName" className='font-semibold'  >Name</label>
+<label htmlFor="fullName" className='font-semibold'  >Fullname</label>
 <input 
 type='text'
 name="fullName"
@@ -130,7 +130,7 @@ onChange={handleUserInput}
 
 </div>
 <div className='flex flex-col gap-1' >
-<label htmlFor="email" className='font-semibold'  >Name</label>
+<label htmlFor="email" className='font-semibold'  >Email</label>
 <input 
 type='email'
 required
@@ -146,7 +146,7 @@ onChange={handleUserInput}
 
 </div>
 <div className='flex flex-col gap-1' >
-<label htmlFor="password" className='font-semibold'  >Name</label>
+<label htmlFor="password" className='font-semibold'  >Password</label>
 <input 
 type='password'
 required
@@ -163,7 +163,7 @@ onChange={handleUserInput}
 
 </div>
 
-<button type="submit" className='mt-2 bg-yellow-500 transitionall ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer ' >
+<button type="submit"   className='mt-2 bg-yellow-500 transitionall ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer ' >
 Create account
 </button>
 <p className="text-center" > Already have an account? <Link to ="/Login"className="link text-accent cursor-pointer">Login</Link> </p>

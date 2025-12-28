@@ -1,8 +1,9 @@
 import React from 'react'
 import toast from 'react-hot-toast';
 import {  useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import HomeLayout from '../../layouts/HomeLayout';
 import { getUserData } from '../../Redux/Slices/AuthSlice';
 import { cancelCourseBundle } from '../../Redux/Slices/RazorpaySlice';
 

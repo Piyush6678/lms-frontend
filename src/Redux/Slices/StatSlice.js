@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-import axiosInstance from "../../Helpers/axiosInstance";
+import axiosInstance from "../../Helpers/axiosinstace";
+
+
 const initialState = {
     allUsersCount: 0,
     subscribedCount: 0

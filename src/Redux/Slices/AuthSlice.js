@@ -63,11 +63,12 @@ export const logout=createAsyncThunk("/auth/logout",async()=>{
 
 export const updateProfile=createAsyncThunk("/user/update/profile",async (data)=>{
     try{
-        const response=axiosInstance.put(`user/updatae/${data[0]}`,data[1])
-
+        const response=axiosInstance.put(`user/update/${data[0]}`,data[1])
+console.log(response)
         toast.promise(response, {
             loading: "Wait! profile update in progress...",
             success: (data) => {
+                console.log("update profile thunk",data)
                 return data?.data?.message;
             },
             error: "Failed to update profile"
@@ -101,6 +102,14 @@ const authSlice=createSlice({
     reducers:{},
     extraReducers:(builder)=>{
         builder
+        .addCase(createAccount.fulfilled,(state,action)=>{
+            localStorage.setItem("data",JSON.stringify(action?.payload?.user));
+            localStorage.setItem("isLoggedIn",true);
+            localStorage.setItem("role",action?.payload?.user?.role)
+            state.isLoggedIn=true
+            state.data=action?.payload?.user
+            state.role=action?.payload?.user?.role
+        })
         .addCase(login.fulfilled,(state,action)=>{
             localStorage.setItem("data",JSON.stringify(action?.payload?.user));
             localStorage.setItem("isLoggedIn",true);
