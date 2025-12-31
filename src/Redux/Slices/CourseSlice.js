@@ -32,6 +32,7 @@ export const createNewCourse=createAsyncThunk("/course/create",async(data)=>{
         formData.append("category",data?.category)
         formData.append("createdBy",data?.createdBy)
         formData.append("thumbnail",data?.thumbnail)
+        console.log("formdata from create course",formData)
         const response =axiosInstance.post("/courses",formData);
         toast.promise(response,{
             loading:"Creating New Course",
@@ -58,7 +59,35 @@ export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
     }
 });
 
- const courseSlice=createSlice({
+
+export const updateCourse = createAsyncThunk("/course/update", async (data) => {
+    try {
+
+
+        let formData = new FormData();
+        formData.append("title", data?.title);
+        formData.append("category", data?.category);
+        formData.append("createdBy", data?.createdBy);
+        formData.append("description", data?.description);
+        if (data.thumbnail) {
+            formData.append("thumbnail", data.thumbnail);
+        }
+
+        const response = axiosInstance.put(`/courses/${data.id}`, formData);
+        toast.promise(response, {
+            loading: "Updating Course...",
+            success: "Course Updated Successfully",
+            error: "Failed to update course",
+        });
+
+        return (await response).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message);
+    }
+});
+
+
+const courseSlice=createSlice({
     name:"course",
     initialState,
     reducers:{},

@@ -2,20 +2,24 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import HomeLayout from '../../layouts/HomeLayout';
-import { createNewCourse } from '../../Redux/Slices/CourseSlice'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-const CreateCourse = () => { 
+import HomeLayout from '../../layouts/HomeLayout';
+import { updateCourse } from '../../Redux/Slices/CourseSlice'
+
+const EditCourse = () => { 
  const dispatch=useDispatch()
  const navigate=useNavigate();
+ const {state} = useLocation();
+
  const [userInput,setUserInput]=useState({
-    title:"",
-    description:"",
-    category:"",
-    createdBy:"",
-    thumbnail:null,
-    previewImage:""
+    id: state?._id,
+    title: state?.title,
+    description: state?.description,
+    category: state?.category,
+    createdBy: state?.createdBy,
+    thumbnail: null,
+    previewImage: state?.thumbnail?.secure_url
  })
 
  function handleImageUpload(e){
@@ -45,20 +49,12 @@ const CreateCourse = () => {
  }
  async function onFormSubmit(e){
     e.preventDefault();
-    if(!userInput.title || !userInput.description || !userInput.category || !userInput.thumbnail || !userInput.createdBy) {
+    if(!userInput.title || !userInput.description || !userInput.category || !userInput.createdBy) {
             toast.error("All fields are mandatory");
             return;
         }
-  const response = await dispatch(createNewCourse(userInput));
+  const response = await dispatch(updateCourse(userInput));
         if(response?.payload?.success) {
-            setUserInput({
-                title: "",
-                category: "",
-                createdBy: "",
-                description: "",
-                thumbnail: null,
-                previewImage: ""
-            });
             navigate("/courses");
         }
  }
@@ -70,10 +66,10 @@ const CreateCourse = () => {
     className='flex flex-col justify-center gap-5 rounded-lg text-white w-[700px] shadow-[0_0_10px_balck] relative p-4 '
     
     >
-            <Link className='absolute top-8 text-2xl link text-accent cursor-pointer'  > 
+            <Link className='absolute top-8 text-2xl link text-accent cursor-pointer' to="/courses" > 
             <AiOutlineArrowLeft/>
              </Link>
-            <h1 className='text-center text-2xl font-bold'  > Create New Course </h1>
+            <h1 className='text-center text-2xl font-bold'  > Edit Course </h1>
         <main className='grid grid-cols-2 gap-x-10'   >
 < div className='gap-y-6' >
     <div>
@@ -178,7 +174,7 @@ const CreateCourse = () => {
 
 </div>
   <button type="submit" className="w-full py-2 rounded-sm font-semibold text-lg cursor-pointer bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300">
-                        Create Course
+                        Update Course
                     </button>
 
         </main>
@@ -196,4 +192,4 @@ const CreateCourse = () => {
   )
 }
 
-export default CreateCourse
+export default EditCourse
