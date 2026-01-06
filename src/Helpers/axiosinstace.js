@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL=import.meta.env.VITE_BACKEND_URL
+const BASE_URL = "https://lms-server-yzbd.onrender.com/api/v1";
 
 
 const axiosInstance =axios.create();
