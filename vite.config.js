@@ -8,6 +8,7 @@ export default defineConfig({
     transformer: 'lightningcss',
   },
   build: {
+    target: 'esnext',
     cssMinify: 'lightningcss',
   },
 })
