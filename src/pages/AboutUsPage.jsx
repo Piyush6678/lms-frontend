@@ -1,6 +1,6 @@
 import React from 'react'
 
-import aboutMainImage from "../Assets/Images/aboutMainImage.png";
+import aboutMainImage from "../assets/Images/aboutMainImage.png";
 
 ;
 import CarouselSlide from '../Componenets/CaraouselSlide';
